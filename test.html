@@ -1,102 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+  <title>{{ data.name }}</title>
+  <!-- Передаём имя теста и массив вопросов -->
+  <script type="application/json" id="quiz-data">
+      {{ {'name': data['name'], 'questions': data['data']} | tojson }}
+  </script>
+  <style>
+    .question-btn.active {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+    }
+    .question-btn.answered {
+      background-color: #198754;
+      border-color: #198754;
+    }
+    #finish-btn {
+      background-color: #198754;
+      border-color: #198754;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="shadow header">
-        <header class="p-3 text-bg-dark">
-            <div class="container" bis_skin_checked="1">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
-                    bis_skin_checked="1">
-                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                            <use xlink:href="#bootstrap"></use>
-                        </svg>
-                    </a>
-
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="index.html" id="home-button" class="nav-link px-2 text-secondary">Empowerquiz</a>
-                        </li>
-                    </ul>
-
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input style="height: 50px;" type="search" class="form-control form-control-dark text-bg-dark"
-                            placeholder="Поиск..." aria-label="Search">
-                    </form>
-
-                    <div class="text-end" bis_skin_checked="1">
-                        <button style="height: 50px;" type="button" class="btn btn-outline-light me-2">Вход</button>
-                        <button style="height: 50px;" type="button" class="btn btn-light">Регистрация</button>
-                    </div>
-                </div>
-
-            </div>
-        </header>
-    </div>
-    <div class="main-container" style="position: relative">
-        <div class="exit-button">
-            <a href="index.html" style="text-decoration: none; color: black;">
-                <button type="button" class="btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
-                        class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                        <path
-                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z" />
-                    </svg>
-                </button>
-            </a>
+  <div class="shadow header">
+    <header class="p-3 text-bg-dark">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+          </a>
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li>
+              <a href="http://127.0.0.1:8000/api/main/all/test/" id="home-button" class="nav-link px-2 text-secondary">
+                Empowerquiz
+              </a>
+            </li>
+          </ul>
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input style="height: 50px;" type="search" class="form-control form-control-dark text-bg-dark"
+                   placeholder="Поиск..." aria-label="Search">
+          </form>
+          <div class="text-end">
+            <button style="height: 50px;" type="button" class="btn btn-outline-light me-2">Вход</button>
+            <button style="height: 50px;" type="button" class="btn btn-light">Регистрация</button>
+          </div>
         </div>
-        <div class="question-navigation" style="display: flex; justify-content: center; margin-top: 20px;">
-            <div class="btn-group" role="group" aria-label="Question navigation">
-                <button type="button" class="btn btn-secondary border">1</button>
-                <button type="button" class="btn btn-secondary border">2</button>
-                <button type="button" class="btn btn-secondary border">3</button>
-                <button type="button" class="btn btn-secondary border">4</button>
-                <button type="button" class="btn btn-secondary border">5</button>
-                <button type="button" class="btn btn-secondary border">6</button>
-                <button type="button" class="btn btn-secondary border">7</button>
-                <button type="button" class="btn btn-secondary border">8</button>
-                <button type="button" class="btn btn-secondary border">9</button>
-                <button type="button" class="btn btn-secondary border">10</button>
-                <!-- Add more buttons for additional questions as needed -->
-            </div>
-        </div>
-        <form>
-            <div class="question" style="font-size: 25px; display: flex; flex-direction: column; align-items: right; margin-top: 50px; margin-left: 60px; gap: 20px;">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="answer" id="answer1" value="answer1">
-                    <label class="form-check-label" for="answer1">Вариант 1</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="answer" id="answer2" value="answer2">
-                    <label class="form-check-label" for="answer2">Вариант 2</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="answer" id="answer3" value="answer3">
-                    <label class="form-check-label" for="answer3">Вариант 3</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="answer" id="answer4" value="answer4">
-                    <label class="form-check-label" for="answer4">Вариант 4</label>
-                </div>
-            </div>
-            <div style="display: flex; justify-content: Left; margin-top: 30px; margin-left: 60px; ">
-                <button id="submit-btn"type="submit" class="btn btn-dark"style="height: 50px; width: 100px">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
-                    </svg>
-                </button>
-            </div>
-        </form>
+      </div>
+    </header>
+  </div>
+
+  <div class="main-container" style="position: relative">
+    <div class="exit-button">
+      <a href="index.html" style="text-decoration: none; color: black;">
+        <button type="button" class="btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+               class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+          </svg>
+        </button>
+      </a>
     </div>
-    <script src="script.js"></script>
+
+    <div class="question-navigation" style="display: flex; justify-content: center; margin-top: 20px;">
+      <div class="btn-group" role="group" aria-label="Question navigation">
+        {% for i in range(data['data']|length) %}
+          <button type="button" class="btn btn-secondary border question-btn" data-index="{{ i }}">
+            {{ i + 1 }}
+          </button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <form id="quiz-form">
+      <div class="question" style="font-size: 25px; display: flex; flex-direction: column; align-items: left; margin-top: 50px; margin-left: 60px; gap: 20px;">
+        <h3 id="question-text">{{ data['data'][0]['question'] }}</h3>
+        <div class="form-check">
+          <!-- Изменили value на "answer_A" -->
+          <input class="form-check-input" type="radio" name="answer" id="answer_A" value="answer_A">
+          <label class="form-check-label" for="answer_A">{{ data['data'][0]['answer_A'] }}</label>
+        </div>
+        <div class="form-check">
+          <!-- Изменили value на "answer_B" -->
+          <input class="form-check-input" type="radio" name="answer" id="answer_B" value="answer_B">
+          <label class="form-check-label" for="answer_B">{{ data['data'][0]['answer_B'] }}</label>
+        </div>
+        {% if data['data'][0]['answer_C'] %}
+          <div class="form-check">
+            <!-- Изменили value на "answer_C" -->
+            <input class="form-check-input" type="radio" name="answer" id="answer_C" value="answer_C">
+            <label class="form-check-label" for="answer_C">{{ data['data'][0]['answer_C'] }}</label>
+          </div>
+        {% endif %}
+        {% if data['data'][0]['answer_D'] %}
+          <div class="form-check">
+            <!-- Изменили value на "answer_D" -->
+            <input class="form-check-input" type="radio" name="answer" id="answer_D" value="answer_D">
+            <label class="form-check-label" for="answer_D">{{ data['data'][0]['answer_D'] }}</label>
+          </div>
+        {% endif %}
+
+      </div>
+      <div style="display: flex; justify-content: space-between; margin-top: 30px; margin-left: 60px; margin-right: 60px;">
+        <button id="prev-btn" type="button" class="btn btn-dark" style="height: 50px; width: 100px" disabled>
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+          </svg>
+        </button>
+        <div id="action-buttons">
+          <button id="next-btn" type="button" class="btn btn-dark" style="height: 50px; width: 100px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                    d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
+            </svg>
+          </button>
+          <button id="finish-btn" type="button" class="btn btn-success" style="height: 50px; width: 150px; display: none;">
+            Закончить
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script src="{{ url_for('static', path='/script.js') }}"></script>
 </body>
-
 </html>

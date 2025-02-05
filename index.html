@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
     <title>Document</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
                 </a>
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="index.html" id="home-button" class="nav-link px-2 text-secondary">Empowerquiz</a></li>
+                    <li><a href="http://127.0.0.1:8000/api/main/all/test/" id="home-button" class="nav-link px-2 text-secondary">Empowerquiz</a></li>
                 </ul>
 
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -45,13 +45,17 @@
                     <div class="card shadow border" bis_skin_checked="1" style="background-color: #b41a1ad8;">
                         <p class="card-title px-3 text-light">Тест на навык принятия решений</p>
                         <div class="test-img-container" style="position: relative;">
-                            <img class="test-img" src="media\decision.png">
+                            <img class="test-img" src="{{ url_for('media', path='/decision.png') }}" alt="Decision Image">
                         </div>
                         <div class="card-body" bis_skin_checked="1">
                             <p class="card-text text-light">Данный тест поможет вам узнать себя получше в вопросе принятия решений.</p>
                             <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
                                 <div class="btn-group" bis_skin_checked="1">
-                                    <a type="button" id="test-preview" class="btn btn-light btn-outline-secondary" onclick="redirectToPage(this)">Пройти</a>
+                                    <form action="/api/main/test/decision/" method="post">
+                                        <input type="hidden" name="text" value="Тест на навык принятия решений">
+<!--                                    <a type="button" id="test-preview" class="btn btn-light btn-outline-secondary" onclick="redirectToPage(this)">Пройти</a>*-->
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
                                 </div>
                                 <small class="text-light">20 mins</small>
                             </div>
@@ -62,13 +66,16 @@
                     <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Способность к делегированию полномочий</p>
                         <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="media\delegate.png">
+                            <img class="test-img" src="{{ url_for('media', path='/delegate.png') }}">
                         </div>
                         <div class="card-body" bis_skin_checked="1">
                             <p class="card-text text-light">Тест помогает выявить признаки того, что вы спидозная тварь</p>
                             <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
                                 <div class="btn-group" bis_skin_checked="1">
-                                    <button type="button" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    <form action="/api/main/test/delineation/" method="post">
+                                        <input type="hidden" name="text" value="Способность к делегированию полномочий">
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
                                 </div>
                                 <small class="text-light">9 mins</small>
                             </div>
@@ -79,13 +86,16 @@
                     <div class="card shadow border" style="background-color: #2388aad8;" bis_skin_checked="1">
                         <p class="card-title px-3 text-light">Тест на определение роли в команде</p>
                         <div class="test-img-container" style="position: relative;">
-                            <img class="test-img" src="media\roles.png" style="height: 365px">
+                            <img class="test-img" src="{{ url_for('media', path='/roles.png') }}" style="height: 365px">
                         </div>
                         <div class="card-body" bis_skin_checked="1">
-                            <p class="card-text text-light">Этот тест является улучшеной версией тетса на СПИД. за всю историю сайта его не прошел еще никто</p>
+                            <p class="card-text text-light">Данный тест поможет вам выяснить какую роль вы подсознательно хотите занимать в команде.</p>
                             <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
                                 <div class="btn-group" bis_skin_checked="1">
-                                    <button type="button" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    <form action="/api/main/test/roleInTeamTest/" method="post">
+                                        <input type="hidden" name="text" value="Тест на определение роли в команде">
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
                                 </div>
                                 <small class="text-light">12 mins</small>
                             </div>
@@ -112,6 +122,6 @@
         эффективность вашего коллектива!</p>
     </div>
 </footer>
-<script src="script.js"></script>   
+  <script src="{{ url_for('static', path='/script.js') }}"></script>
 </body>
 </html>
