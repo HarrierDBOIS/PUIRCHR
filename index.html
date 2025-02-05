@@ -45,13 +45,17 @@
                     <div class="card shadow border" bis_skin_checked="1" style="background-color: #b41a1ad8;">
                         <p class="card-title px-3 text-light">Тест на навык принятия решений</p>
                         <div class="test-img-container" style="position: relative;">
-                            <img class="test-img" src="media\decision.png">
+                            <img class="test-img" src="/static/decision.png" alt="Decision Image">
                         </div>
                         <div class="card-body" bis_skin_checked="1">
                             <p class="card-text text-light">Данный тест поможет вам узнать себя получше в вопросе принятия решений.</p>
                             <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
                                 <div class="btn-group" bis_skin_checked="1">
-                                    <a type="button" id="test-preview" class="btn btn-light btn-outline-secondary" onclick="redirectToPage(this)">Пройти</a>
+                                    <form action="/api/main/test/decision/" method="post">
+                                        <input type="hidden" name="text" value="Тест на навык принятия решений">
+<!--                                    <a type="button" id="test-preview" class="btn btn-light btn-outline-secondary" onclick="redirectToPage(this)">Пройти</a>*-->
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
                                 </div>
                                 <small class="text-light">20 mins</small>
                             </div>
@@ -62,7 +66,7 @@
                     <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Способность к делегированию полномочий</p>
                         <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="media\delegate.png">
+                            <img class="test-img" src="/static/delegate.png">
                         </div>
                         <div class="card-body" bis_skin_checked="1">
                             <p class="card-text text-light">Тест помогает выявить признаки того, что вы спидозная тварь</p>
@@ -79,7 +83,7 @@
                     <div class="card shadow border" style="background-color: #2388aad8;" bis_skin_checked="1">
                         <p class="card-title px-3 text-light">Тест на определение роли в команде</p>
                         <div class="test-img-container" style="position: relative;">
-                            <img class="test-img" src="media\roles.png" style="height: 365px">
+                            <img class="test-img" src="/static/roles.png" style="height: 365px">
                         </div>
                         <div class="card-body" bis_skin_checked="1">
                             <p class="card-text text-light">Этот тест является улучшеной версией тетса на СПИД. за всю историю сайта его не прошел еще никто</p>

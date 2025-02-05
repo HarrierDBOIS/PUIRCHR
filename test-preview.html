@@ -40,7 +40,7 @@
     </div>
     <div class="main-container" style="position: relative">
         <div class="exit-button">
-            <a href="index.html" style="text-decoration: none; color: black;">
+            <a href="http://127.0.0.1:8000/api/main/all/test/" style="text-decoration: none; color: black;">
                 <button type="button" class="btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x-circle-fill"
                         viewBox="0 0 16 16">
@@ -51,16 +51,20 @@
             </a>
         </div>
         <div style="display: flex; justify-content: center; align-items: center; height: 300px;">
-            <img src="media\test.png" class="rounded-circle" width="200" height="200">
+            <img src="/static/test.png" class="rounded-circle" width="200" height="200">
         </div>
         <div style="text-align: center">
-            <p class="test-name">Название теста</p>
+            <p class="test-name">{{data.name}}</p>
         </div>
         <div class="start-button" style="display: flex; justify-content: center; padding: 20px">
-            <button id="test" class="btn btn-dark" style="font-size: 20px" onclick="redirectToPage(this)">Начать тест</button>
+            <form action="/api/main/test/decision/test/" method="post">
+                <input type="hidden" name="text" value="{{ data.name }}">
+                <button type="submit" class="btn btn-dark" style="font-size: 20px">Начать тест</button>
+            </form>
         </div>
+
         <div class="test-description" style="display: flex; justify-content: center; padding: 20px;">
-            <p style="text-align: center; max-width: 700px">Описание тестаОписание тестаОписание тестаОписание тестаОписание тестаОписание тестаОписание тестаОписание тестаОписание тестаОписание тестаОписание тестаОписание тестаОписание тестаОписание тестаОписание тестаОписание теста</p>
+            <p style="text-align: center; max-width: 700px">{{data.description}}</p>
         </div>
     </div>
     <script src="script.js"></script>

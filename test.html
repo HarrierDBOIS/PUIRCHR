@@ -69,6 +69,21 @@
             </div>
         </div>
         <form>
+<!--            Вот тут надо итерироваться вот json - {"name": "Тест на навык принятия решений",
+            "description": "Данный тест поможет вам узнать себя получше в вопросе принятия решений.",
+            "data": [
+                 "number": row[0],
+                "question": row[1],
+                "answer_A": row[2],
+                "answer_B": row[3],
+                "answer_C": row[4],
+            ]}
+            И это только первый тест, остальные ответ будет (да, нет) будет такой же json только два ответа  A и B
+
+            И еще я передам count (int) будет количество вопросов
+            -->
+
+
             <div class="question" style="font-size: 25px; display: flex; flex-direction: column; align-items: right; margin-top: 50px; margin-left: 60px; gap: 20px;">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="answer" id="answer1" value="answer1">
@@ -87,7 +102,7 @@
                     <label class="form-check-label" for="answer4">Вариант 4</label>
                 </div>
             </div>
-            <div style="display: flex; justify-content: Left; margin-top: 30px; margin-left: 60px; ">
+            <div style="display: flex; justify-content: Left; margin-top: 30px; margin-left: 60px;">
                 <button id="submit-btn"type="submit" class="btn btn-dark"style="height: 50px; width: 100px">
                     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"/>
