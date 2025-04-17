@@ -6,39 +6,59 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
     <title>Document</title>
+    <style>
+        /* Дополнительные стили для заголовков */
+        .centered-title {
+            text-align: center; /* Выравнивание текста по центру */
+            margin: 40px 0; /* Отступы сверху и снизу */
+            font-size: 2rem; /* Размер шрифта */
+            color: #333; /* Цвет текста */
+        }
+
+        /* Стиль для карточек */
+        .card {
+            margin-bottom: 20px; /* Отступ между карточками */
+        }
+    </style>
 </head>
 <body>
-<div class="shadow header">
-    <header class="p-3 text-bg-dark">
-        <div class="container" bis_skin_checked="1">
-            <div class="d-flex flex-wrap align-items-center justify-content-center"
-                bis_skin_checked="1">
-
-
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="http://127.0.0.1:8000/api/main/all/test/" id="home-button" class="nav-link px-2 text-white">Empowerquiz</a></li>
-                </ul>
+    <!-- Шапка страницы -->
+    <div class="shadow header">
+        <header class="p-3 text-bg-dark">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center">
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li>
+                            <a href="http://127.0.0.1:8000/api/main/all/test/" id="home-button" class="nav-link px-2 text-white">
+                                Empowerquiz
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </header>
+    </div>
 
-        </div>
-    </header>
-</div>
-    <div class="album py-5 bg-body-tertiary" bis_skin_checked="1">
-        <div class="container" bis_skin_checked="1">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" bis_skin_checked="1">
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #b41a1ad8;">
+    <!-- Заголовки и контент -->
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <!-- Заголовок "Делегирование" -->
+            <h1 class="centered-title">Делегирование</h1>
+
+            <!-- Карточки для "Делегирование" -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #b41a1ad8;">
                         <p class="card-title px-3 text-light">Тест на навык принятия решений</p>
                         <div class="test-img-container" style="position: relative;">
                             <img class="test-img" src="{{ url_for('media', path='/decision.png') }}" alt="Decision Image">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Данный тест поможет вам узнать себя получше в вопросе принятия решений.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/decision/" method="post">
                                         <input type="hidden" name="text" value="Тест на навык принятия решений">
-<!--                                    <a type="button" id="test-preview" class="btn btn-light btn-outline-secondary" onclick="redirectToPage(this)">Пройти</a>*-->
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
                                     </form>
                                 </div>
@@ -47,16 +67,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Способность к делегированию полномочий</p>
-                        <div class="test-img-container"style="position: relative;">
+                        <div class="test-img-container" style="position: relative;">
                             <img class="test-img" src="{{ url_for('media', path='/delegate.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Данный тест поможет вам узнать себя получше в вопросе делегирования полномочий.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Способность к делегированию полномочий">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -67,16 +87,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" style="background-color: #2388aad8;" bis_skin_checked="1">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2388aad8;">
                         <p class="card-title px-3 text-light">Тест на определение роли в команде</p>
                         <div class="test-img-container" style="position: relative;">
                             <img class="test-img" src="{{ url_for('media', path='/roles.png') }}" style="height: 365px">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
-                            <p class="card-text text-light">Данный тест поможет вам выяснить какую роль вы подсознательно хотите занимать в команде.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                        <div class="card-body">
+                            <p class="card-text text-light">Данный тест поможет вам выяснить, какую роль вы подсознательно хотите занимать в команде.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/roleInTeamTest/" method="post">
                                         <input type="hidden" name="text" value="Тест на определение роли в команде">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -87,22 +107,23 @@
                         </div>
                     </div>
                 </div>
-                <h1 style="display: flex; justify-content: center">Отбор персонала</h1>
-                <h1 style="display: flex; justify-content: center">Отбор персонала</h1>
-                <h1 style="display: flex; justify-content: center">Отбор персонала</h1>
+            </div>
 
+            <!-- Заголовок "Отбор персонала" -->
+            <h1 class="centered-title">Отбор персонала</h1>
 
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+            <!-- Карточки для "Отбор персонала" -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Определение навыков рекрутера</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/personal1.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
-                            <p class="card-text text-light">Данный тест поможет вам выяснить вам какими навыками вы обладаете для того, чтоб стать рекрутером</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                        <div class="card-body">
+                            <p class="card-text text-light">Данный тест поможет вам выяснить, какими навыками вы обладаете для того, чтобы стать рекрутером.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Определение навыков рекрутера">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -113,20 +134,16 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Эффективность собеседований</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/personal2.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Пройдите тест, чтобы оценить свои навыки проведения интервью и принятия решений о найме.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Эффективность собеседований">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -137,18 +154,16 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Работа с отказами и кандидатами</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/personal3.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Узнайте, насколько профессионально вы взаимодействуете с кандидатами и обрабатываете отказы.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Работа с отказами и кандидатами">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -159,23 +174,23 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Заголовок "Адаптация сотрудников" -->
+            <h1 class="centered-title">Адаптация сотрудников</h1>
 
-                <h1 style="display: flex; justify-content: center">Адаптация сотрудников</h1>
-                <h1 style="display: flex; justify-content: center">Адаптация сотрудников</h1>
-                <h1 style="display: flex; justify-content: center">Адаптация сотрудников</h1>
-
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+            <!-- Карточки для "Адаптация сотрудников" -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Организация процесса адаптации</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/adaptive1.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Проверьте, насколько эффективно вы организуете процесс адаптации новых сотрудников.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Организация процесса адаптации">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -186,18 +201,16 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Поддержка новичков</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/adaptive2.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Оцените, насколько хорошо вы поддерживаете новых сотрудников в первые месяцы работы.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Поддержка новичков">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -208,18 +221,16 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Оценка результатов адаптации</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/adaptive3.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Узнайте, насколько качественно вы анализируете успешность адаптации сотрудников.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Оценка результатов адаптации">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -230,23 +241,23 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Заголовок "Мотивация персонала" -->
+            <h1 class="centered-title">Мотивация персонала</h1>
 
-                <h1 style="display: flex; justify-content: center">Мотивация персонала</h1>
-                <h1 style="display: flex; justify-content: center">Мотивация персонала</h1>
-                <h1 style="display: flex; justify-content: center">Мотивация персонала</h1>
-
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+            <!-- Карточки для "Мотивация персонала" -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Система мотивации в компании</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/motivatoin1.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Пройдите тест, чтобы оценить справедливость и эффективность вашей системы мотивации.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Система мотивации в компании">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -257,20 +268,16 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Индивидуальная мотивация</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/motivatoin2.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Проверьте, насколько вы учитываете личные особенности сотрудников при построении мотивации.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Индивидуальная мотивация">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -281,18 +288,16 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Профилактика демотивации</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/motivation3.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Оцените, насколько эффективно вы работаете с признаками снижения вовлеченности сотрудников.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Профилактика демотивации">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -303,23 +308,23 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
+            <!-- Заголовок "Системы компенсации и стимулирования персонала" -->
+            <h1 class="centered-title">Системы компенсации и стимулирования персонала</h1>
 
-                <h1 style="display: flex; justify-content: center">Системы компенсации и стимулирования персонала</h1>
-                <h1 style="display: flex; justify-content: center">Системы компенсации и стимулирования персонала</h1>
-                <h1 style="display: flex; justify-content: center">Системы компенсации и стимулирования персонала</h1>
-
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+            <!-- Карточки для "Системы компенсации и стимулирования персонала" -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Базовая система компенсаций</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/stimulate1.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Узнайте, насколько прозрачна и конкурентоспособна ваша система оплаты труда.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Базовая система компенсаций">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -330,18 +335,16 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Гибкие системы стимулирования</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/stimulate2.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Узнайте, насколько прозрачна и конкурентоспособна ваша система оплаты труда.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Гибкие системы стимулирования">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -352,17 +355,16 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col" bis_skin_checked="1">
-                    <div class="card shadow border" bis_skin_checked="1" style="background-color: #2f195cd8;">
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
                         <p class="card-title px-3 text-light">Оценка эффективности компенсаций</p>
-                        <div class="test-img-container"style="position: relative;">
-                            <img class="test-img" src="{{ url_for('media', path='/kaplya.png') }}">
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/stimulate3.png') }}">
                         </div>
-                        <div class="card-body" bis_skin_checked="1">
+                        <div class="card-body">
                             <p class="card-text text-light">Оцените, как хорошо вы анализируете влияние системы оплаты на продуктивность и удовлетворенность.</p>
-                            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-                                <div class="btn-group" bis_skin_checked="1">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
                                     <form action="/api/main/test/delineation/" method="post">
                                         <input type="hidden" name="text" value="Оценка эффективности компенсаций">
                                         <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
@@ -374,30 +376,253 @@
                     </div>
                 </div>
 
+                <h1 class="centered-title">Системы компенсации и стимулирования персонала</h1>
+                <p>
+                <p>
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
+                        <p class="card-title px-3 text-light">Диагностика проблемного поведения</p>
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/problem_atention.png') }}">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-light">
+                                Оцените, насколько эффективны и обоснованы ваши методы работы с непростыми сотрудниками. </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="/api/main/test/delineation/" method="post">
+                                        <input type="hidden" name="text" value="Диагностика проблемного поведения">
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
+                                </div>
+                                <small class="text-light">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
+                        <p class="card-title px-3 text-light">Методы работы с проблемными сотрудникам</p>
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/problem_cases.png') }}">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-light">
+                               Результаты теста помогут вам определить, насколько ваши методы работы с проблемными сотрудниками сбалансированы между поддержкой и дисциплиной. </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="/api/main/test/delineation/" method="post">
+                                        <input type="hidden" name="text" value="Методы работы с проблемными сотрудникам">
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
+                                </div>
+                                <small class="text-light">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
+                        <p class="card-title px-3 text-light">Профилактика проблемного поведения</p>
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/mordor.png') }}">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-light">
+                            Результаты теста помогут вам определить, насколько ваши профилактические меры направлены на создание долгосрочной стабильности.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="/api/main/test/delineation/" method="post">
+                                        <input type="hidden" name="text" value="Профилактика проблемного поведения">
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
+                                </div>
+                                <small class="text-light">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="centered-title">Создание эффективной команды</h1>
+                <p>
+                <p>
+
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
+                        <p class="card-title px-3 text-light">Формирование команды: подбор и роли</p>
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/create_a_team.png') }}">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-light">
+                            Результаты теста помогут вам определить, ваши подходы к формированию команды учитывают ключевые факторы для создания сбалансированного коллектива.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="/api/main/test/delineation/" method="post">
+                                        <input type="hidden" name="text" value="Формирование команды: подбор и роли">
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
+                                </div>
+                                <small class="text-light">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
+                        <p class="card-title px-3 text-light">Командная динамика и взаимодействие</p>
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/dymanic.png') }}">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-light">
+                            Результаты теста покажут, насколько регулярно вы поддерживаете здоровую командную динамику и какие инструменты можно внедрить для улучшения взаимодействия.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="/api/main/test/delineation/" method="post">
+                                        <input type="hidden" name="text" value="Командная динамика и взаимодействие">
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
+                                </div>
+                                <small class="text-light">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
+                        <p class="card-title px-3 text-light">Развитие и результативность команды</p>
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/develop.png') }}">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-light">
+                            Результаты теста помогут вам оценить, насколько системно вы отслеживаете и развиваете эффективность команды, используя метрики и инструменты для улучшения результатов.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="/api/main/test/delineation/" method="post">
+                                        <input type="hidden" name="text" value="Развитие и результативность команды">
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
+                                </div>
+                                <small class="text-light">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h1 class="centered-title">Развитие персонала</h1>
+                <p>
+                <p>
+
+
+                 <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
+                        <p class="card-title px-3 text-light">Оценка потребностей в развитии персонала</p>
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/mark_develop.png') }}">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-light">
+                            Результаты теста помогут вам оценить, насколько системно вы отслеживаете и развиваете эффективность команды, используя метрики и инструменты для улучшения результатов.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="/api/main/test/delineation/" method="post">
+                                        <input type="hidden" name="text" value="Оценка потребностей в развитии персонала">
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
+                                </div>
+                                <small class="text-light">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
+                        <p class="card-title px-3 text-light">Методы развития персонала</p>
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/methods_develop.png') }}">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-light">
+                            Результаты теста покажут, насколько разнообразны и активно применяются ваши методы обучения, и какие инструменты можно внедрить для повышения их эффективности.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="/api/main/test/delineation/" method="post">
+                                        <input type="hidden" name="text" value="Методы развития персонала">
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
+                                </div>
+                                <small class="text-light">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col">
+                    <div class="card shadow border" style="background-color: #2f195cd8;">
+                        <p class="card-title px-3 text-light">Оценка эффективности программ развития</p>
+                        <div class="test-img-container" style="position: relative;">
+                            <img class="test-img" src="{{ url_for('media', path='/program_develop.png') }}">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-light">
+                           Результаты теста помогут вам оценить, насколько системно вы отслеживаете и анализируете результаты обучения, чтобы максимизировать его влияние на бизнес.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <form action="/api/main/test/delineation/" method="post">
+                                        <input type="hidden" name="text" value="Оценка эффективности программ развития">
+                                        <button type="submit" class="btn btn-light btn-outline-secondary">Пройти</button>
+                                    </form>
+                                </div>
+                                <small class="text-light">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
 
             </div>
         </div>
     </div>
-<footer id="shadow sticky-footer" class="text-body-secondary py-5 text-bg-dark">
-    <div class="container" bis_skin_checked="1">
-        <p class="float-end mb-1">
-            <a href="#" bis_skin_checked="1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-arrow-up border rounded-circle"
-                    viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5">
-                    </path>
-                </svg>
-            </a>
-        </p>
-        <p class="mb-1 text-white">На нашем сайте представлены тесты по психологии управления и развития персонала. Мы предлагаем инструменты для оценки и
-        улучшения навыков в различных областях, связанных с работой с людьми в организации. Исследуйте наши тесты и повышайте
-        эффективность вашего коллектива!</p>
-    </div>
-</footer>
-  <script src="{{ url_for('static', path='/script.js') }}"></script>
+
+    <!-- Футер -->
+    <footer id="shadow sticky-footer" class="text-body-secondary py-5 text-bg-dark">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-arrow-up border rounded-circle"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5">
+                        </path>
+                    </svg>
+                </a>
+            </p>
+            <p class="mb-1 text-white">
+                На нашем сайте представлены тесты по психологии управления и развития персонала. Мы предлагаем инструменты для оценки и улучшения навыков в различных областях, связанных с работой с людьми в организации. Исследуйте наши тесты и повышайте эффективность вашего коллектива!
+            </p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', path='/script.js') }}"></script>
 </body>
 </html>

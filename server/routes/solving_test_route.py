@@ -124,6 +124,96 @@ async def receive_test_data(request: Request, text: str = Form(...)):
             for _ in data["data"]:
                 count += 1
 
+        case "Диагностика проблемного поведения":
+            from ..get_data.tema6.get_data_from_problem_atention import (
+                read_problem_atention,
+            )
+
+            data = await read_problem_atention()
+            count = 0
+            for _ in data["data"]:
+                count += 1
+
+        case "Методы работы с проблемными сотрудникам":
+            from ..get_data.tema6.get_data_from_cases import (
+                read_cases,
+            )
+
+            data = await read_cases()
+            count = 0
+            for _ in data["data"]:
+                count += 1
+
+        case "Профилактика проблемного поведения":
+            from ..get_data.tema6.get_data_from_res_prob_at import (
+                read_resolve_problem_atention,
+            )
+
+            data = await read_resolve_problem_atention()
+            count = 0
+            for _ in data["data"]:
+                count += 1
+
+        case "Формирование команды: подбор и роли":
+            from ..get_data.tema7.get_data_from_create_a_team import (
+                read_creat_a_team,
+            )
+
+            data = await read_creat_a_team()
+            count = 0
+            for _ in data["data"]:
+                count += 1
+
+        case "Командная динамика и взаимодействие":
+            from ..get_data.tema7.get_data_from_dinamyc_team import (
+                read_dynamyc_team,
+            )
+
+            data = await read_dynamyc_team()
+            count = 0
+            for _ in data["data"]:
+                count += 1
+
+        case "Развитие и результативность команды":
+            from ..get_data.tema7.get_data_from_develop_team import (
+                read_develop_team,
+            )
+
+            data = await read_develop_team()
+            count = 0
+            for _ in data["data"]:
+                count += 1
+
+        case "Оценка потребностей в развитии персонала":
+            from ..get_data.tema8.get_data_from_mark_develop import (
+                read_mark_develop,
+            )
+
+            data = await read_mark_develop()
+            count = 0
+            for _ in data["data"]:
+                count += 1
+
+        case "Методы развития персонала":
+            from ..get_data.tema8.get_data_from_methods_develop import (
+                read_mark_methods_develop,
+            )
+
+            data = await read_mark_methods_develop()
+            count = 0
+            for _ in data["data"]:
+                count += 1
+
+        case "Оценка эффективности программ развития":
+            from ..get_data.tema8.get_data_from_program_develop import (
+                read_mark_program_develop,
+            )
+
+            data = await read_mark_program_develop()
+            count = 0
+            for _ in data["data"]:
+                count += 1
+
     return templates.TemplateResponse(
         "test.html", {"request": request, "data": data, "count": count}
     )

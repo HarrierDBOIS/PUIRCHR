@@ -402,3 +402,235 @@ async def receive_test_data(request: Request):
                     "test_name": test_name,
                 },
             )
+
+        case "Диагностика проблемного поведения":
+            result = 0
+            for answer in answers:
+                if answer == "answer_A":
+                    result += 1
+                elif answer == "answer_B":
+                    result += 2
+                elif answer == "answer_C":
+                    result += 3
+                elif answer == "answer_D":
+                    result += 4
+                elif answer == "answer_E":
+                    result += 5
+
+            from ..get_data.tema6.get_data_from_problem_atention import (
+                get_result_from_problem_atention,
+            )
+
+            info = get_result_from_problem_atention(result)
+            description = info.get("description")
+
+            return templates.TemplateResponse(
+                "results.html",
+                {
+                    "request": request,
+                    "math_res": math_res,
+                    "description": description,
+                    "test_name": test_name,
+                },
+            )
+
+        case "Методы работы с проблемными сотрудникам":
+            result = 0
+            for answer in answers:
+                if answer == "answer_A":
+                    result += 1
+                elif answer == "answer_B":
+                    result += 2
+                elif answer == "answer_C":
+                    result += 3
+
+            from ..get_data.tema6.get_data_from_cases import (
+                get_result_from_cases,
+            )
+
+            info = get_result_from_cases(result)
+            description = info.get("description")
+
+            return templates.TemplateResponse(
+                "results.html",
+                {
+                    "request": request,
+                    "math_res": math_res,
+                    "description": description,
+                    "test_name": test_name,
+                },
+            )
+
+        case "Профилактика проблемного поведения":
+            result = 0
+            for answer in answers:
+                if answer == "answer_A":
+                    result += 1
+                elif answer == "answer_B":
+                    result += 2
+                elif answer == "answer_C":
+                    result += 3
+                elif answer == "answer_D":
+                    result += 4
+
+            from ..get_data.tema6.get_data_from_res_prob_at import (
+                get_result_from_resolve_problem_atention,
+            )
+
+            info = get_result_from_resolve_problem_atention(result)
+            description = info.get("description")
+
+            return templates.TemplateResponse(
+                "results.html",
+                {
+                    "request": request,
+                    "math_res": math_res,
+                    "description": description,
+                    "test_name": test_name,
+                },
+            )
+
+        case "Формирование команды: подбор и роли":
+            result = 0
+            for answer in answers:
+                if answer == "answer_A":
+                    result += 1
+                elif answer == "answer_B":
+                    result += 2
+                elif answer == "answer_C":
+                    result += 3
+                elif answer == "answer_D":
+                    result += 4
+                elif answer == "answer_E":
+                    result += 5
+
+            from ..get_data.tema7.get_data_from_create_a_team import (
+                get_result_from_create_a_team,
+            )
+
+            info = get_result_from_create_a_team(result)
+            description = info.get("description")
+
+            return templates.TemplateResponse(
+                "results.html",
+                {
+                    "request": request,
+                    "math_res": math_res,
+                    "description": description,
+                    "test_name": test_name,
+                },
+            )
+
+        case "Командная динамика и взаимодействие":
+            result = 0
+            for answer in answers:
+                if answer == "answer_A":
+                    result += 1
+                elif answer == "answer_B":
+                    result += 2
+                elif answer == "answer_C":
+                    result += 3
+
+            from ..get_data.tema7.get_data_from_dinamyc_team import (
+                get_result_from_dynamic_team,
+            )
+
+            info = get_result_from_dynamic_team(result)
+            description = info.get("description")
+
+            return templates.TemplateResponse(
+                "results.html",
+                {
+                    "request": request,
+                    "math_res": math_res,
+                    "description": description,
+                    "test_name": test_name,
+                },
+            )
+
+        case "Оценка потребностей в развитии персонала":
+            result = 0
+            for answer in answers:
+                if answer == "answer_A":
+                    result += 1
+                elif answer == "answer_B":
+                    result += 2
+                elif answer == "answer_C":
+                    result += 3
+                elif answer == "answer_D":
+                    result += 4
+                elif answer == "answer_E":
+                    result += 5
+
+            from ..get_data.tema8.get_data_from_mark_develop import (
+                get_result_from_mark_develop,
+            )
+
+            info = get_result_from_mark_develop(result)
+            description = info.get("description")
+
+            return templates.TemplateResponse(
+                "results.html",
+                {
+                    "request": request,
+                    "math_res": math_res,
+                    "description": description,
+                    "test_name": test_name,
+                },
+            )
+
+        case "Методы развития персонала":
+            result = 0
+            for answer in answers:
+                if answer == "answer_A":
+                    result += 1
+                elif answer == "answer_B":
+                    result += 2
+                elif answer == "answer_C":
+                    result += 3
+
+            from ..get_data.tema8.get_data_from_methods_develop import (
+                get_result_from_methods_develop,
+            )
+
+            info = get_result_from_methods_develop(result)
+            description = info.get("description")
+
+            return templates.TemplateResponse(
+                "results.html",
+                {
+                    "request": request,
+                    "math_res": math_res,
+                    "description": description,
+                    "test_name": test_name,
+                },
+            )
+
+        case "Оценка эффективности программ развития":
+            result = 0
+            for answer in answers:
+                if answer == "answer_A":
+                    result += 1
+                elif answer == "answer_B":
+                    result += 2
+                elif answer == "answer_C":
+                    result += 3
+                elif answer == "answer_D":
+                    result += 4
+
+            from ..get_data.tema8.get_data_from_program_develop import (
+                get_result_from_program_develop,
+            )
+
+            info = get_result_from_program_develop(result)
+            description = info.get("description")
+
+            return templates.TemplateResponse(
+                "results.html",
+                {
+                    "request": request,
+                    "math_res": math_res,
+                    "description": description,
+                    "test_name": test_name,
+                },
+            )
